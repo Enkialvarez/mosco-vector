@@ -1,0 +1,82 @@
+/* Configuraciones generales */
+* { box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', 'NetLogo-Style', sans-serif;
+    margin: 0; background-color: #f1f3f4;
+    height: 100vh;
+}
+
+.contenedor-principal {
+    display: flex;
+    height: 100vh;
+}
+
+/* Panel de Control (Izquierda) */
+.panel-control {
+    width: 320px;
+    background-color: #dfe7ed;
+    border-right: 2px solid #ccc;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+h2 { font-size: 18px; margin: 0 0 10px; color: #333; }
+
+.slider-group, .control-group {
+    display: flex; flex-direction: column; gap: 5px;
+}
+
+.linea-division { height: 2px; background-color: #ccc; margin: 10px 0; }
+
+button {
+    font-size: 14px; font-weight: bold; border-radius: 6px; padding: 10px;
+    cursor: pointer; transition: all 0.2s; border: 1px solid #ccc;
+}
+
+.botones-principales button { flex: 1; border-color: #888; }
+#btn-ejecutar { background-color: #8ab4f8; }
+
+.action-buttons { display: flex; gap: 10px; }
+.action-buttons button { flex: 1; text-transform: uppercase; }
+#btn-fumigar { background-color: #ff5722; color: white; }
+#btn-descacharrizar { background-color: #4caf50; color: white; }
+.secondary button { background-color: #607d8b; color: white; }
+
+.salida-datos {
+    background: #ffffcc; padding: 10px; border-radius: 8px;
+    display: flex; justify-content: space-between; border: 1px solid #ddd;
+}
+
+/* Vista de Simulación (Derecha y "Seguimiento") */
+.vista-simulacion-container {
+    flex: 1; background: #cce7e8; position: relative;
+    overflow: hidden; /* Clave para el seguimiento */
+}
+
+.mundo {
+    width: 2000px; /* Mundo más grande que la vista */
+    height: 2000px;
+    position: absolute; top: 0; left: 0;
+    background-size: 100px 100px;
+    background-image: linear-gradient(to right, #b4e0b4 1px, transparent 1px), 
+                      linear-gradient(to bottom, #b4e0b4 1px, transparent 1px);
+    transition: transform 0.1s linear; /* Para seguimiento suave */
+}
+
+/* Agentes */
+.agente {
+    position: absolute; font-size: 30px;
+    transition: top 0.2s, left 0.2s;
+}
+
+.persona { font-size: 35px; color: black; z-index: 5; }
+.mosquito { color: #f9d80c; z-index: 10; animation: volar 0.5s infinite alternate; }
+
+.seguido {
+    box-shadow: 0 0 15px 5px #f9d80c;
+    border-radius: 50%;
+}
+
+@keyframes volar {
+    0% { transform: translateY(0); } 100% { transform: translateY(-5px); }
+}

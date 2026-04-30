@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Brote de Dengue</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        
+        <!-- Panel de Control (Izquierda) -->
+        <aside class="panel-control">
+            <h2>Configuración</h2>
+            
+            <div class="slider-group">
+                <label for="personas-init">Personas iniciales:</label>
+                <input type="range" id="personas-init" min="10" max="100" value="50">
+                <span id="personas-val">50</span>
+            </div>
+
+            <div class="slider-group">
+                <label for="mosquitos-init">Mosquitos iniciales:</label>
+                <input type="range" id="mosquitos-init" min="5" max="50" value="20">
+                <span id="mosquitos-val">20</span>
+            </div>
+
+            <div class="control-group">
+                <label>Estaciones:</label>
+                <select id="select-estaciones">
+                    <option value="summer-fall">Verano-Otoño</option>
+                    <option value="fall-winter">Otoño-Invierno</option>
+                    <option value="winter-spring">Invierno-Primavera</option>
+                    <option value="spring-summer">Primavera-Verano</option>
+                </select>
+            </div>
+
+            <div class="linea-division"></div>
+
+            <h2>Controles</h2>
+            <div class="botones-principales">
+                <button id="btn-setear">Setear</button>
+                <button id="btn-ejecutar">Ejecutar / Pausa</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-fumigar">FUMIGAR</button>
+                <button id="btn-descacharrizar">DESCACHARRIZAR</button>
+            </div>
+
+            <div class="action-buttons secondary">
+                <button id="btn-seguir">Seguir a pers.</button>
+                <button id="btn-dejar-seguir">Dejar de seguir</button>
+            </div>
+
+            <div class="salida-datos">
+                <div><span>Personas:</span> <strong id="personas-count">0</strong></div>
+                <div><span>Mosquitos:</span> <strong id="mosquitos-count">0</strong></div>
+            </div>
+        </aside>
+
+        <!-- Vista de Simulación (Derecha) -->
+        <main class="vista-simulacion-container" id="vista-container">
+            <div id="vista-simulacion" class="mundo">
+                <!-- Los agentes (personas y mosquitos) se crean aquí -->
+            </div>
+        </main>
+    </div>
+
+    <script src="logica.js"></script>
+</body>
+</html>
