@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Control Vectorial | Enrique Torres Alvarez</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="contenedor-principal">
+        <aside class="panel-control">
+            <h2>Configuración Inicial</h2>
+            
+            <div class="slider-group">
+                <label>Personas: <span id="personas-val">50</span></label>
+                <input type="range" id="personas-init" min="10" max="100" value="50">
+            </div>
+
+            <div class="slider-group">
+                <label>Mosquitos adultos: <span id="mosquitos-val">15</span></label>
+                <input type="range" id="mosquitos-init" min="2" max="50" value="15">
+            </div>
+
+            <div class="slider-group">
+                <label>Tanques de concreto: <span id="tanques-val">6</span></label>
+                <input type="range" id="tanques-init" min="0" max="15" value="6">
+            </div>
+
+            <div class="slider-group">
+                <label>Baldes (Cacharros): <span id="cacharros-val">8</span></label>
+                <input type="range" id="cacharros-init" min="0" max="25" value="8">
+            </div>
+
+            <div class="linea-division"></div>
+
+            <h2>Controles del Simulador</h2>
+            <div class="botones-principales">
+                <button id="btn-setear">Setear Escenario</button>
+                <button id="btn-ejecutar">Ejecutar / Pausa</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-pastilla" class="btn-azul">⚪ PASTILLA EFERVESCENTE (2 Tanques)</button>
+                <button id="btn-descacharrizar" class="btn-verde">🗑️ DESCACHARRIZAR (2 Baldes)</button>
+                <button id="btn-fumigar" class="btn-naranja">💨 FUMIGAR MOSCOS ADULTOS</button>
+                <button id="btn-grafico" class="btn-morado">📊 VER REPORTE FINAL</button>
+            </div>
+
+            <div class="salida-datos">
+                <div><span>🚶 Sanos:</span> <strong id="sanos-count">0</strong></div>
+                <div class="alerta"><span>🤒 Infectados:</span> <strong id="infectados-count">0</strong></div>
+                <div><span>🦟 Mosquitos (Población):</span> <strong id="mosquitos-count">0</strong></div>
+                <div class="linea-division"></div>
+                <div><span>🔲 Tanques s/control:</span> <strong id="tanques-count">0</strong></div>
+                <div class="info-bti"><span>⚪ Tanques con pastilla:</span> <strong id="tratados-count">0</strong></div>
+                <div><span>🪣 Baldes (Cacharros):</span> <strong id="cacharros-count">0</strong></div>
+            </div>
+
+            <!-- SELLO OFICIAL DEL AUTOR -->
+            <div class="firma-laboratorio">
+                <div class="firma-logo mosco-volador">🦟</div>
+                <div class="firma-texto">
+                    <span class="firma-titulo">Docente: Enrique Torres Alvarez</span>
+                    <span class="firma-sub">CETIS 43 | PAEC 2026</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="vista-simulacion-container">
+            <div id="vista-simulacion" class="mundo"></div>
+        </main>
+    </div>
+
+    <!-- Ventana Emergente para el Gráfico Final -->
+    <div id="modal-grafico" class="modal">
+        <div class="modal-content">
+            <span id="cerrar-modal" class="cerrar">&times;</span>
+            <h2>Reporte Epidemiológico Final</h2>
+            
+            <!-- MEMBRETE EN EL REPORTE -->
+            <div class="sello-agua">DOCENTE: ENRIQUE TORRES ALVAREZ - CETIS 43 | PAEC 2026</div>
+
+            <div class="grafico-barras">
+                <div class="barra-grupo">
+                    <span class="etiqueta">Personas Sanas (<span id="g-sanos">0</span>)</span>
+                    <div class="barra-fondo"><div id="bar-sanos" class="barra sanos-color"></div></div>
+                </div>
+                <div class="barra-grupo">
+                    <span class="etiqueta">Personas Infectadas (<span id="g-infectados">0</span>)</span>
+                    <div class="barra-fondo"><div id="bar-infectados" class="barra infectados-color"></div></div>
+                </div>
+                <div class="barra-grupo" style="margin-top: 10px;">
+                    <span class="etiqueta">Población Final de Mosquitos (<span id="g-mosquitos">0</span>)</span>
+                    <div class="barra-fondo"><div id="bar-mosquitos" class="barra mosquitos-color"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="logica.js"></script>
+</body>
+</html>
